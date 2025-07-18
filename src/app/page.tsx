@@ -1,103 +1,129 @@
-import Image from "next/image";
+import { CarouselPlugin } from "@/components/carousel";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Atlética Fatec Zona Sul",
+  description: "Bem vindo ao nosso site",
+  openGraph: {
+    title: "Atlética Fatec Zona Sul",
+    description: "Bem vindo ao nosso site",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+};
+
+export const revalidate = 10;
 
 export default function Home() {
+  const random = Math.random();
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <div className="h-[calc(100vh-100px)] w-full flex flex-col">
+      <div className="w-full sm:h-[50%]  bg-amber-200 flex justify-center items-center">
+        <img
+          src="/transform.jpg"
+          alt="Imagem responsiva"
+          className="w-full h-full object-cover"
         />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
+      </div>
+      <div className="w-full h-[10%] bg-[#95001D]  flex justify-center items-center">
+        <ul className="flex gap-10 text-[#e4e4e4] font-bold">
+          <li className="flex flex-col justify-items-center">
+            <h1>Modalidades</h1>
+            <h1 className="text-center">16</h1>
           </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
+          <li className="flex flex-col justify-items-center">
+            <h1>Atletas</h1>
+            <h1 className="text-center">+50</h1>
           </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          <li className="flex flex-col justify-items-center">
+            <h1>Torcida</h1>
+            <h1 className="text-center">+300</h1>
+          </li>
+        </ul>
+      </div>
+      <div className="w-full flex flex-col flex-1  ">
+        <div className="text-3xl text-center text-[#cc1338] font-bold  bg-white">
+          GESTÃO 2025
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+
+        <div className="w-[100%] sm:w-[50%]">
+          <CarouselPlugin />
+        </div>
+      </div>
+
+      <div className="w-full flex-col mt-10">
+        <div className="pl-2 text-3xl text-left text-[#cc1338] font-bold">
+          Nossa história
+        </div>
+        <div className="w-[100%] pl-2 sm:w-[50%] text-amber-50">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ea,
+          earum quisquam facere, ex porro quia voluptate nisi nam perferendis
+          dolor expedita laboriosam delectus commodi saepe non distinctio nulla
+          beatae. rum quisquam facere, ex porro quia voluptate nisi nam
+          perferendis dolor expedita laboriosam delectus commodi saepe non
+          distinctio nulla beatae
+        </div>
+      </div>
+
+      <div className="w-full flex-col mt-10 pt-2 bg-[#cc1338]">
+        <div className="pl-2 text-3xl text-center text-white font-bold">
+          Modalidades
+        </div>
+        <div className="w-full text-amber-50 p-3">
+          A Atlética está de portas abertas para você que quer se movimentar,
+          fazer novos amigos e viver intensamente o espírito universitário! São
+          41 modalidades esportivas para todos os gostos — desde os esportes
+          mais tradicionais até os mais alternativos. Não importa se você já é
+          atleta ou quer começar agora: sempre tem espaço para quem quer
+          participar com garra, diversão e espírito de equipe. Escolha a
+          modalidade que mais combina com você e faça parte dessa energia!
+        </div>
+
+        {/* Grid de imagens responsivo */}
+        <div className="grid grid-cols-2 md:flex md:flex-row md:justify-center gap-2 p-4">
+          <img
+            src="/esportes/baska1.png"
+            alt=""
+            className="w-full md:w-1/4 h-[300px] sm:h-[400px] object-cover shadow-lg"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+          <img
+            src="/esportes/baska2.png"
+            alt=""
+            className="w-full md:w-1/4 h-[300px] sm:h-[400px] object-cover shadow-lg"
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
+          <img
+            src="/esportes/volei1.png"
+            alt=""
+            className="w-full md:w-1/4 h-[300px] sm:h-[400px] object-cover shadow-lg"
           />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <img
+            src="/esportes/volei2.png"
+            alt=""
+            className="w-full md:w-1/4 h-[300px] sm:h-[400px] object-cover shadow-lg"
+          />
+        </div>
+      </div>
+
+      <div className="w-full flex-col mt-10 pb-10">
+        <div className="pl-2 text-3xl text-left text-[#cc1338] font-bold">
+          Ter um efeito para aparecer quando rolar a tela
+        </div>
+        <div className="w-[100%] pl-2 sm:w-[50%] text-amber-50  ">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ea,
+          earum quisquam facere, ex porro quia voluptate nisi nam perferendis
+          dolor expedita laboriosam delectus commodi saepe non distinctio nulla
+          beatae. rum quisquam facere, ex porro quia voluptate nisi nam
+          perferendis dolor expedita laboriosam delectus commodi saepe non
+          distinctio nulla beatae
+        </div>
+      </div>
     </div>
   );
 }
