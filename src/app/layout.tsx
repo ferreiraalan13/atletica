@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { Header } from "../components/header";
 import "./globals.css";
+import { AOSInitializer } from "@/components/aos/AOSInitializer";
 
 export const metadata: Metadata = {
   title: "Aula Next JS do zero!",
@@ -26,8 +27,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body className={`antialiased bg-[#151515]`}>
+        <AOSInitializer />
         <Header />
         <main className="pt-[100px] ">{children}</main>
       </body>

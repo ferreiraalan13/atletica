@@ -111,7 +111,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-full flex-col mt-10 pb-10">
+      <div className="w-full flex-col mt-10 pb-10" data-aos="fade-right">
         <div className="pl-2 text-3xl text-left text-[#cc1338] font-bold">
           Ter um efeito para aparecer quando rolar a tela
         </div>
