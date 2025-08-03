@@ -13,7 +13,7 @@ import { Button } from "../ui/button";
 import { Menu } from "lucide-react";
 
 export function Header() {
-  const itensMenu = ["Contatos", "Dashboard", "Postagens"];
+  const itensMenu = ["Loja atlética", "Login"];
   return (
     <header className="bg-[#151515] h-[100px] text-white px-6 py-4 shadow-md flex justify-between items-center fixed w-[100%] z-50">
       <div className="text-xl font-bold tracking-wide ">
