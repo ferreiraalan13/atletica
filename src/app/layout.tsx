@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { Header } from "../components/header";
 import "./globals.css";
 import { AOSInitializer } from "@/components/aos/AOSInitializer";
+import { AuthProvider } from "@/contexts/auth-context";
 
 export const metadata: Metadata = {
   title: "Aula Next JS do zero!",
@@ -29,9 +30,11 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`antialiased bg-[#151515]`}>
-        <AOSInitializer />
-        <Header />
-        <main className="pt-[100px] ">{children}</main>
+        <AuthProvider>
+          <AOSInitializer />
+          <Header />
+          <main className="pt-[100px] ">{children}</main>
+        </AuthProvider>
       </body>
     </html>
   );
