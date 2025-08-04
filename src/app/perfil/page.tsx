@@ -11,17 +11,17 @@ export default function PerfilPage() {
   const { user, isAuthenticated, logout } = useAuth();
   const router = useRouter();
 
-  // Redirecionar para login se não estiver autenticado
-  useEffect(() => {
-    if (!isAuthenticated) {
-      router.push("/login");
-    }
-  }, [isAuthenticated, router]);
+  // // Redirecionar para login se não estiver autenticado
+  // useEffect(() => {
+  //   if (!isAuthenticated) {
+  //     router.push("/login");
+  //   }
+  // }, [isAuthenticated, router]);
 
-  // Se não estiver autenticado, não renderiza nada
-  if (!isAuthenticated || !user) {
-    return null;
-  }
+  // // Se não estiver autenticado, não renderiza nada
+  // if (!isAuthenticated || !user) {
+  //   return null;
+  // }
 
   return (
     <div className="min-h-[calc(100vh-100px)] flex items-center justify-center px-4 py-12">
@@ -29,20 +29,22 @@ export default function PerfilPage() {
         <div className="flex flex-col items-center justify-center space-y-4">
           <Avatar className="h-24 w-24 bg-[#95001D]">
             <AvatarFallback className="text-white text-2xl">
-              {user.name.charAt(0)}
+              {user?.name?.charAt(0)}
             </AvatarFallback>
           </Avatar>
 
-          <h1 className="text-2xl font-bold text-white">{user.name}</h1>
-          <p className="text-gray-400">{user.email}</p>
+          <h1 className="text-2xl font-bold text-white">{user?.name}</h1>
+          <p className="text-gray-400">{user?.email}</p>
 
           <div className="w-full border-t border-[#333] my-4 pt-4">
-            <h2 className="text-xl font-semibold text-white mb-4">Informações da Conta</h2>
-            
+            <h2 className="text-xl font-semibold text-white mb-4">
+              Informações da Conta
+            </h2>
+
             <div className="space-y-2">
               <div className="flex justify-between">
                 <span className="text-gray-400">ID:</span>
-                <span className="text-white">{user.id}</span>
+                <span className="text-white">{user?.id}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-400">Status:</span>

@@ -1,6 +1,13 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
+import Cookies from "js-cookie";
 
 type User = {
   id: string;
@@ -40,27 +47,31 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       // Simulando uma chamada de API
       // Em um cenário real, você faria uma requisição para seu backend
-      
+
       // Simulando um delay de rede
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       // Simulando um usuário retornado pela API
       const mockUser = {
         id: "1",
         name: "Usuário Teste",
-        email
+        email,
       };
-      
+
       // Simulando um token JWT
-      const mockToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6IlVzdcOhcmlvIFRlc3RlIiwiaWF0IjoxNTE2MjM5MDIyfQ";
-      
+      const mockToken =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6IlVzdcOhcmlvIFRlc3RlIiwiaWF0IjoxNTE2MjM5MDIyfQ";
+
       // Salvando no localStorage
       localStorage.setItem("atletica-token", mockToken);
       localStorage.setItem("atletica-user", JSON.stringify(mockUser));
-      
+
+      // Salvando no cookie para o middleware
+      Cookies.set("atletica-token", mockToken, { expires: 7, path: "/" });
+
       setUser(mockUser);
       setIsAuthenticated(true);
-      
+
       return true;
     } catch (error) {
       console.error("Erro ao fazer login:", error);
@@ -68,31 +79,39 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const register = async (name: string, email: string, password: string): Promise<boolean> => {
+  const register = async (
+    name: string,
+    email: string,
+    password: string
+  ): Promise<boolean> => {
     try {
       // Simulando uma chamada de API para registro
       // Em um cenário real, você faria uma requisição para seu backend
-      
+
       // Simulando um delay de rede
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       // Simulando um usuário criado
       const mockUser = {
         id: "1",
         name,
-        email
+        email,
       };
-      
+
       // Simulando um token JWT
-      const mockToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6IlVzdcOhcmlvIFRlc3RlIiwiaWF0IjoxNTE2MjM5MDIyfQ";
-      
+      const mockToken =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6IlVzdcOhcmlvIFRlc3RlIiwiaWF0IjoxNTE2MjM5MDIyfQ";
+
       // Salvando no localStorage
       localStorage.setItem("atletica-token", mockToken);
       localStorage.setItem("atletica-user", JSON.stringify(mockUser));
-      
+
+      // Salvando no cookie para o middleware
+      Cookies.set("atletica-token", mockToken, { expires: 7, path: "/" });
+
       setUser(mockUser);
       setIsAuthenticated(true);
-      
+
       return true;
     } catch (error) {
       console.error("Erro ao registrar:", error);
@@ -104,14 +123,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // Remover dados do localStorage
     localStorage.removeItem("atletica-token");
     localStorage.removeItem("atletica-user");
-    
+
+    // Remover cookie
+    Cookies.remove("atletica-token", { path: "/" });
+
     // Limpar estado
     setUser(null);
     setIsAuthenticated(false);
   };
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, login, register, logout }}>
+    <AuthContext.Provider
+      value={{ user, isAuthenticated, login, register, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );
