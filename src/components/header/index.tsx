@@ -18,7 +18,6 @@ import { Avatar, AvatarFallback } from "../ui/avatar";
 
 export function Header() {
   const { user, isAuthenticated, logout } = useAuth();
-  const itensMenu = ["Loja atlética"];
   return (
     <header className="bg-[#151515] h-[100px] text-white px-6 py-4 shadow-md flex justify-between items-center fixed w-[100%] z-50">
       <div className="text-xl font-bold tracking-wide ">
@@ -44,13 +43,19 @@ export function Header() {
               </SheetDescription>
             </SheetHeader>
             <div className="flex flex-col gap-4 p-4">
-              <Link href="/" className="text-white hover:text-[#95001D] transition-colors">
+              <Link
+                href="/"
+                className="text-white hover:text-[#95001D] transition-colors"
+              >
                 Home
               </Link>
-              <Link href="/loja atlética" className="text-white hover:text-[#95001D] transition-colors">
+              <Link
+                href="/loja"
+                className="text-white hover:text-[#95001D] transition-colors"
+              >
                 Loja atlética
               </Link>
-              
+
               {isAuthenticated ? (
                 <div className="mt-4 border-t border-[#333] pt-4">
                   <div className="flex items-center gap-3 mb-4">
@@ -61,8 +66,8 @@ export function Header() {
                     </Avatar>
                     <span className="text-white">{user?.name}</span>
                   </div>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     className="w-full text-white border-[#333] hover:bg-[#95001D] hover:text-white"
                     onClick={() => logout()}
                   >
@@ -71,7 +76,10 @@ export function Header() {
                   </Button>
                 </div>
               ) : (
-                <Link href="/login" className="text-white hover:text-[#95001D] transition-colors">
+                <Link
+                  href="/login"
+                  className="text-white hover:text-[#95001D] transition-colors"
+                >
                   Login / Cadastro
                 </Link>
               )}
@@ -89,15 +97,11 @@ export function Header() {
             <Link href={`/`}>Home</Link>
             <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-[#95001D] transition-all duration-300 group-hover:w-full"></span>
           </li>
-          {itensMenu.map((item, index) => (
-            <li key={item} className="cursor-pointer relative group transition">
-              <Link href={`/${itensMenu[index].toLowerCase()}`}>
-                {itensMenu[index]}
-              </Link>
-              <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-[#95001D] transition-all duration-300 group-hover:w-full"></span>
-            </li>
-          ))}
-          
+          <li className="cursor-pointer relative group transition">
+            <Link href={`/loja`}>Loja Atlética</Link>
+            <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-[#95001D] transition-all duration-300 group-hover:w-full"></span>
+          </li>
+
           {isAuthenticated ? (
             <li className="flex items-center gap-4">
               <div className="flex items-center gap-2">
@@ -108,8 +112,8 @@ export function Header() {
                 </Avatar>
                 <span>{user?.name}</span>
               </div>
-              <Button 
-                variant="ghost" 
+              <Button
+                variant="ghost"
                 size="sm"
                 className="text-white hover:bg-[#95001D] hover:text-white"
                 onClick={() => logout()}
